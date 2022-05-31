@@ -1,0 +1,108 @@
+*, *::before *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --sedans: hsl(31, 77%, 52%);
+    --suvs: hsl(184, 100%, 22%);
+    --luxury: hsl(179, 100%, 13%);
+    --paragraph: hsla(0, 0%, 100%, 0.75);
+    --light-gray:  hsl(0, 0%, 95%);
+}
+
+body {
+    font-family: 'Lexend Deca', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    margin-top: 0;
+}
+
+.grid {
+    display: grid;
+    grid-template-areas: 'sedans suvs luxury';
+    width: min(70vw, 900px);
+    height: min(65vh, 500px);
+    overflow: hidden;
+    border-radius: .5rem;
+}
+
+.grid article {
+    color: white;
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    height: 1fr;
+    width: 1fr;
+}
+
+.grid article:nth-child(1) {
+    --color: var(--sedans);
+    background-color: var(--sedans);
+}
+
+.grid article:nth-child(2) {
+    --color: var(--suvs);
+    background-color: var(--suvs);
+    
+}
+.grid article:nth-child(3) {
+    --color: var(--luxury);
+    background-color: var(--luxury)
+}
+
+h1 {
+    font-family: 'Big Shoulders Display', cursive;
+    text-transform: uppercase;
+    color: var(--light-gray);
+    font-size: 2.5rem;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+p {
+    font-size: 15px;
+    color: var(--paragraph);
+    line-height: 1.5;
+}
+
+.grid article button {
+    width: max-content;
+    outline: none;
+    border: none;
+    background-color: white;
+    border: 2px solid transparent;
+    border-radius: 100vw;
+    padding: 1rem 2rem;
+    color: var(--color);
+    font-family: inherit;
+    margin-top: auto;
+    justify-self: flex-end;
+    cursor: pointer;
+    transition: color 100ms ease-in-out, background-color 100ms ease-in-out, border-color 100ms ease-in-out;
+}
+
+.grid article button:hover, 
+.grid article button:focus {
+    background-color: transparent;
+    border-color: white;
+    color: white;
+}
+
+@media screen and (max-width: 1000px) {
+    body {
+        padding-block: 4rem;
+        align-items: flex-start;
+    }
+    .grid {
+        height: max-content;
+        grid-template-areas: 
+        'sedans' 
+        'suvs'
+        'luxury';
+    }
+}
